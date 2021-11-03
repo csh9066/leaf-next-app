@@ -1,0 +1,23 @@
+.root {
+  height: 60px;
+  border-top: 1px solid #ddd;
+  @apply fixed -bottom-0 w-full flex justify-around bg-white;
+}
+
+.item {
+  @apply flex flex-col justify-center items-center text-xs;
+}
+
+.item p {
+  margin-top: 2px;
+  @apply text-xs text-gray-400;
+}
+
+.active svg path {
+  @apply text-primary;
+  fill: #58a65b;
+}
+
+.active p {
+  @apply text-primary;
+}
