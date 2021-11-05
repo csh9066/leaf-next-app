@@ -1,7 +1,7 @@
 .root {
   height: 60px;
   border-top: 1px solid #ddd;
-  @apply fixed -bottom-0 w-full flex justify-around bg-white;
+  @apply fixed -bottom-0 w-full flex justify-around bg-white z-10;
 }
 
 .item {

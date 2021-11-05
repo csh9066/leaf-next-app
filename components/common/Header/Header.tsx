@@ -51,7 +51,7 @@ function Navigator() {
 function Header({ type }: Props): ReactElement {
   return (
     <Container
-      className="flex justify-between h-12 px-5 fixed border-b border-solid bg-white z-10"
+      className="flex justify-between h-12 px-5 fixed bg-white z-10"
       el="header"
     >
       {type === "default" && <Default />}
