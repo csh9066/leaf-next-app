@@ -1,5 +1,4 @@
 import React, { ReactElement } from "react";
-import s from "./Laoout.module.css";
 import Container from "../../ui/Container";
 
 interface Props {
@@ -7,11 +6,7 @@ interface Props {
 }
 
 function Layout({ children }: Props): ReactElement {
-  return (
-    <div className={s.root}>
-      <Container className="bg-white h-screen">{children}</Container>
-    </div>
-  );
+  return <Container className="bg-white h-screen">{children}</Container>;
 }
 
 export default Layout;
