@@ -1,0 +1,10 @@
+.root {
+  @apply flex justify-center items-center outline-none border-none w-full
+  font-bold text-white bg-primary;
+  border-radius: 10px;
+  height: 55px;
+}
+
+.outlinedPrimary {
+  @apply bg-white text-primary border-primary  border-2 border-solid;
+}
