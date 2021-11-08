@@ -1,0 +1,12 @@
+.root {
+  @apply flex sticky top-11 bg-white;
+
+  a {
+    @apply flex-1 flex justify-center;
+  }
+}
+.item {
+  height: 44px;
+  width: fit-content;
+  @apply text-gray-400 font-bold flex items-center justify-center;
+}

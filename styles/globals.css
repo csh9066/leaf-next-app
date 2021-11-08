@@ -5,7 +5,8 @@ html,
 body {
   padding: 0;
   margin: 0;
-  @apply font-sans;
+  font-family: "Noto Sans";
+  @apply bg-gray-100;
 }
 
 a {

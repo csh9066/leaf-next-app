@@ -1,0 +1,26 @@
+.root {
+  @apply bg-white;
+}
+
+.optionContainer {
+  padding: 23px 10px 145px 10px;
+}
+
+.item {
+  @apply p-4 border;
+}
+
+.footer {
+  @apply fixed bottom-0 bg-white;
+}
+
+.totalPrice {
+  @apply flex justify-between items-center px-5 border-t;
+  height: 60px;
+}
+
+.btnWrapper {
+  @apply flex;
+  padding: 10px;
+  box-shadow: rgb(18 18 18 / 5%) 0px -2px 5px 1px;
+}

@@ -5,6 +5,10 @@
   height: 55px;
 }
 
+.root + .root {
+  margin-left: 10px;
+}
+
 .outlinedPrimary {
   @apply bg-white text-primary border-primary  border-2 border-solid;
 }

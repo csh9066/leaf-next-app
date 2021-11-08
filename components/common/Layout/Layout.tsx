@@ -1,4 +1,6 @@
 import React, { ReactElement } from "react";
+import useLoginModal from "../../../hooks/useLoginModal";
+import LoginModal from "../../auth/LoginModal/LoginModal";
 import Container from "../../ui/Container";
 
 interface Props {
@@ -6,7 +8,13 @@ interface Props {
 }
 
 function Layout({ children }: Props): ReactElement {
-  return <Container className="bg-white h-screen">{children}</Container>;
+  const { visible, onClose } = useLoginModal();
+  return (
+    <>
+      <Container className="bg-white h-screen">{children}</Container>
+      <LoginModal visible={visible} onClose={onClose} />
+    </>
+  );
 }
 
 export default Layout;
