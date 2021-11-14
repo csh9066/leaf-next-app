@@ -1,5 +1,6 @@
 import { useState } from "react";
 import s from "./InputQuantity.module.scss";
+import cn from "classnames";
 
 interface IProps {
   value: number;
@@ -15,7 +16,7 @@ function InputQuantity({
   onIncrase,
   onDecrase,
   setValue,
-  minValue = 0,
+  minValue = 1,
   maxValue = 999,
 }: IProps) {
   const [localValue, setLocalValue] = useState<number>(value || minValue);
@@ -52,7 +53,7 @@ function InputQuantity({
 
   return (
     <div className="flex">
-      <button className={s.btn} onClick={onLocalDecrase}>
+      <button className={cn(s.btn, "rounded-l-xl")} onClick={onLocalDecrase}>
         -
       </button>
       <input
@@ -61,7 +62,7 @@ function InputQuantity({
         value={localValue}
         onChange={onLocalChange}
       />
-      <button className={s.btn} onClick={onLocalIncrase}>
+      <button className={cn(s.btn, "rounded-r-xl")} onClick={onLocalIncrase}>
         +
       </button>
     </div>

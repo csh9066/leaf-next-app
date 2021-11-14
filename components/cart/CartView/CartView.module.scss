@@ -1,0 +1,51 @@
+.root {
+  @apply pt-12 bg-white;
+}
+
+.orderControll {
+  height: 60px;
+  @apply px-5 flex justify-between items-center border-b;
+
+  button {
+    color: #8e8e8e;
+    @apply bg-transparent border-none text-sm;
+  }
+}
+
+.brand {
+  @apply border-b-2;
+  .name {
+    height: 54px;
+    @apply px-5 flex items-center font-bold text-base border-b;
+  }
+}
+
+.bill {
+  padding: 20px;
+  padding-bottom: 245px;
+  dl {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 48px;
+    border-bottom: 1px solid #ddd;
+    dt {
+      color: #8e8e8e;
+      font-size: 14px;
+    }
+    dd {
+      color: #0d0d0d;
+      font-size: 16px;
+      strong {
+        font-size: 24px;
+        font-weight: bold;
+      }
+    }
+  }
+}
+
+.checkout {
+  padding: 0 20px 10px 20px;
+  box-shadow: rgb(18 18 18 / 5%) 0px -2px 5px 1px;
+  @apply fixed bottom-0 bg-white;
+}

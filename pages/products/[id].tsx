@@ -1,7 +1,5 @@
-import axios from "axios";
 import { GetServerSideProps, NextPage } from "next";
 import React, { ReactElement } from "react";
-import useSWR, { useSWRConfig } from "swr";
 import Header from "../../components/common/Header";
 import Layout from "../../components/common/Layout";
 import ProductView from "../../components/product/ProductView";

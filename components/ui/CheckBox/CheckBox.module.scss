@@ -1,0 +1,51 @@
+.root {
+  position: relative;
+  line-height: 20px;
+
+  input {
+    display: none;
+  }
+  label {
+    display: inline-block;
+    z-index: 10;
+    box-sizing: border-box;
+    cursor: pointer;
+    padding-left: 28px;
+    color: #0d0d0d;
+    font-weight: 400;
+    font-size: 14px;
+  }
+
+  label:before {
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: #fff;
+    border: 1px solid #d4d4d4;
+    text-align: center;
+    box-sizing: border-box;
+    content: "";
+    width: 20px;
+    height: 20px;
+    border-radius: 6px;
+    transition: background-color 0.2s;
+  }
+  input:checked + label:before {
+    border-color: #4e7cf2;
+    background-color: #4e7cf2;
+  }
+  label:after {
+    position: absolute;
+    border: 1px solid #d4d4d4;
+    border-width: 0 2px 2px 0;
+    transform: rotate(45deg);
+    content: "";
+    top: 3px;
+    left: 7px;
+    width: 5px;
+    height: 10px;
+  }
+  input:checked + label:after {
+    border-color: #fff;
+  }
+}
