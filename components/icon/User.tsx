@@ -1,4 +1,4 @@
-const User = (props) => {
+const User = (props: any) => {
   return (
     <svg
       width="24"

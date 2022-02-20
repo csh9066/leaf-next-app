@@ -1,0 +1,15 @@
+.label {
+  min-width: 80px;
+  @apply flex items-center text-sm font-bold;
+}
+
+.postCodeBtn {
+  color: #6d6d6d;
+  min-width: 74px;
+  margin-left: 10px;
+  @apply w-16 bg-gray-100 text-xs font-normal flex justify-center items-center;
+}
+
+.tel {
+  min-width: 64px;
+}

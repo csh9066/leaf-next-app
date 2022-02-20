@@ -2,21 +2,22 @@ import React, { ReactElement, useMemo, useState } from "react";
 import Link from "next/link";
 import { SwiperSlide, Swiper } from "swiper/react";
 import s from "./ProductView.module.scss";
-import NavTabs from "../../ui/NavTabs";
 import Container from "../../ui/Container";
 import Button from "../../ui/Button";
 import Heart from "../../icon/Heart";
 import PurchaseModal from "../PurchaseModal";
-import useFetchProduct from "../../../hooks/useFetchProduct";
+import useFetchProduct from "../../../hooks/fetch/useFetchProduct";
 import { useRouter } from "next/router";
-import Modal from "../../ui/Modal/Modal";
+import useFetchProductReivews from "../../../hooks/fetch/useFetchProductReviews";
+import ProductViewNav from "./ProductViewNav";
+import moment from "moment";
+import RightOutlined from "../../icon/RightOutlined";
 
-interface Props {}
-
-function ProductView({}: Props): ReactElement {
+function ProductView() {
   const router = useRouter();
   const productId = useMemo(() => Number(router.query.id), [router.query.id]);
   const { data: product } = useFetchProduct(productId);
+  const { reviews, error, loading } = useFetchProductReivews(productId);
 
   const [purchaseModalVisible, setPurchaseModalVisible] = useState(false);
 
@@ -48,10 +49,13 @@ function ProductView({}: Props): ReactElement {
       <Link href={`/brand/${product?.brand.id}`}>
         <a className={s.brand}>
           <div>{product?.brand.name}</div>
-          <div>{">"}</div>
+          <div className="flex items-center">
+            <RightOutlined />
+          </div>
         </a>
       </Link>
-      <NavTabs />
+      <div id="detail"></div>
+      <ProductViewNav />
       <section className="p-5 mt-10">
         <div className="text-xl font-semibold mb-5">상품 상세</div>
         <div>
@@ -61,8 +65,22 @@ function ProductView({}: Props): ReactElement {
           />
         </div>
       </section>
-      <section className="p-5 mt-10">
-        <div className="text-xl font-semibold mb-5">리뷰</div>
+      <div id="reviews"></div>
+      <section className="mt-10">
+        <div className="px-5 text-xl font-semibold mb-5">
+          리뷰 ({reviews?.length})
+        </div>
+        {reviews?.map((r) => (
+          <div className="border-b p-5" key={r.id}>
+            <div className="flex justify-between mb-2">
+              <div className="font-medium text-sm">{r.author}</div>
+              <div className="font-medium text-sm text-gray-400">
+                {moment(r.updatedAt).format("yyyy.MM.DD")}
+              </div>
+            </div>
+            <p className="font-normal text-sm">{r.content}</p>
+          </div>
+        ))}
       </section>
       <Container className={s.bottomButtons}>
         <div className={s.like}>

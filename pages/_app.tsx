@@ -17,12 +17,13 @@ type AppPropsWithLayout = AppProps & {
 
 function MyApp({ Component, pageProps }: AppPropsWithLayout) {
   const getLayout = Component.getLayout ?? ((page) => page);
+
   return (
     <SWRConfig
       value={{
         revalidateOnFocus: false,
         fetcher: (resource) => api.get(resource).then((res) => res.data),
-        fallback: pageProps?.fallback,
+        fallback: pageProps?.fallback || {},
       }}
     >
       <GlobalProvider>

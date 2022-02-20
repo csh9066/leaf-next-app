@@ -1,4 +1,4 @@
-import React, { useMemo, useState } from "react";
+import React from "react";
 import s from "./CheckBox.module.scss";
 import cn from "classnames";
 
@@ -10,18 +10,12 @@ interface Props {
 }
 
 function Checkbox({ children, checked = false, onChange, className }: Props) {
-  const [localChcekd, setLocalChcekd] = useState(checked);
-  const onLocalChange = () => {
-    setLocalChcekd(!localChcekd);
-    onChange && onChange();
-  };
-
   const rootClassName = cn(s.root, className);
 
   return (
     <div className={rootClassName}>
-      <input type="checkbox" checked={localChcekd} onChange={onLocalChange} />
-      <label onClick={onLocalChange}>{children}</label>
+      <input type="checkbox" checked={checked} onChange={onChange} />
+      <label onClick={onChange}>{children}</label>
     </div>
   );
 }

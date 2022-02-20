@@ -1,6 +1,6 @@
 import { useRouter } from "next/router";
 import React, { useState } from "react";
-import useFetchProduct from "../../../hooks/useFetchProduct";
+import useFetchProduct from "../../../hooks/fetch/useFetchProduct";
 import useIsLoggedIn from "../../../hooks/useIsLoggedIn";
 import useLoginModal from "../../../hooks/useLoginModal";
 import { addCartProduct } from "../../../lib/api/cart";
@@ -27,23 +27,18 @@ function PurchaseModal({ visible, onClose, productId }: PurchaseModalProps) {
 
   const onIncrase = () => {
     setTotalQuantity(totalQuantity + 1);
-    if (product?.price && totalPrice) {
-      setTotalPrice(totalPrice + product?.price);
-    }
+    setTotalPrice(totalPrice + product?.price);
   };
 
   const onDecrase = () => {
     setTotalQuantity(totalQuantity - 1);
-    if (product?.price && totalPrice) {
-      setTotalPrice(totalPrice - product?.price);
-    }
+    setTotalPrice(totalPrice - product?.price);
   };
 
-  const setValue = (v: number) => {
-    setTotalQuantity(v);
-    if (product?.price) {
-      setTotalPrice(product.price * v);
-    }
+  const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const { value } = e.target;
+    setTotalQuantity(Number(value));
+    setTotalPrice(product.price * Number(value));
   };
 
   const onAddCart = async () => {
@@ -66,15 +61,14 @@ function PurchaseModal({ visible, onClose, productId }: PurchaseModalProps) {
 
   return (
     <Modal visible={visible} onClose={onClose}>
-      <div className={s.root}>
+      <Container className={s.root}>
         <div className={s.optionContainer}>
           <div className={s.item}>
             <InputQuantity
-              minValue={1}
               value={totalQuantity}
               onIncrase={onIncrase}
               onDecrase={onDecrase}
-              setValue={setValue}
+              onChange={onChange}
             />
           </div>
         </div>
@@ -94,7 +88,7 @@ function PurchaseModal({ visible, onClose, productId }: PurchaseModalProps) {
             <Button>구매하기</Button>
           </div>
         </Container>
-      </div>
+      </Container>
     </Modal>
   );
 }

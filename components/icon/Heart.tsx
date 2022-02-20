@@ -1,6 +1,6 @@
 import React from "react";
 
-const Heart = (props) => {
+const Heart = (props: any) => {
   return (
     <svg
       width="24"

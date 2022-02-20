@@ -1,18 +1,33 @@
-export interface Cart {
-  itemCount: number;
-  byBrands: CartByBrand[];
+export interface CartInfo {
+  productCount: number;
+  selectedProductCount: number;
+  totalPrice: number;
+  totalDeliveryFee: number;
 }
 
-export interface CartByBrand {
+export interface ByBrand {
   brandId: number;
   brandName: string;
-  products: CartProduct[];
+  items: CartItem[];
 }
 
-export interface CartProduct {
+export interface CartItem {
   productId: number;
-  stock: number;
+  productName: string;
   price: number;
-  image: string;
+  count: number;
+  cartItemId: number;
   checked: boolean;
+}
+
+export interface CheckCartItem {
+  [id: number]: boolean;
+}
+
+export interface CartCheckout {
+  delivery: any;
+  items: any[];
+  deliveryFee: number;
+  productsPrice: number;
+  totalPrice: number;
 }

@@ -1,68 +1,27 @@
-import { useState } from "react";
 import s from "./InputQuantity.module.scss";
 import cn from "classnames";
+import { ChangeEvent } from "react";
 
 interface IProps {
   value: number;
   onIncrase?: () => void;
   onDecrase?: () => void;
-  setValue?: (v: number) => void;
-  minValue?: number;
-  maxValue?: number;
+  onChange: (e: ChangeEvent<HTMLInputElement>) => void;
 }
 
-function InputQuantity({
-  value,
-  onIncrase,
-  onDecrase,
-  setValue,
-  minValue = 1,
-  maxValue = 999,
-}: IProps) {
-  const [localValue, setLocalValue] = useState<number>(value || minValue);
-
-  const onLocalIncrase = () => {
-    if (localValue >= maxValue) {
-      return;
-    }
-    setLocalValue((v) => v + 1);
-    onIncrase && onIncrase();
-  };
-
-  const onLocalDecrase = () => {
-    if (localValue <= minValue) {
-      return;
-    }
-    setLocalValue((v) => v - 1);
-    onDecrase && onDecrase();
-  };
-
-  const onLocalChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const v = Number(e.target.value);
-    if (
-      Number.isNaN(v) ||
-      !Number.isSafeInteger(v) ||
-      v > maxValue ||
-      v < minValue
-    ) {
-      return;
-    }
-    setLocalValue(v);
-    setValue && setValue(v);
-  };
-
+function InputQuantity({ value, onIncrase, onDecrase, onChange }: IProps) {
   return (
     <div className="flex">
-      <button className={cn(s.btn, "rounded-l-xl")} onClick={onLocalDecrase}>
+      <button className={cn(s.btn, "rounded-l-xl")} onClick={onDecrase}>
         -
       </button>
       <input
         className={s.input}
         type="value"
-        value={localValue}
-        onChange={onLocalChange}
+        value={value}
+        onChange={onChange}
       />
-      <button className={cn(s.btn, "rounded-r-xl")} onClick={onLocalIncrase}>
+      <button className={cn(s.btn, "rounded-r-xl")} onClick={onIncrase}>
         +
       </button>
     </div>

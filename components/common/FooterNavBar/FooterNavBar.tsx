@@ -1,7 +1,7 @@
 import React, { ReactElement } from "react";
 import Link from "next/link";
 import cn from "classnames";
-import s from "./NavBar.module.css";
+import s from "./FooterNavBar.module.css";
 import Home from "../../icon/Home";
 import Container from "../../ui/Container";
 import Brand from "../../icon/Brand";
@@ -28,13 +28,13 @@ function NavBar({}: Props): ReactElement {
           <p>스토어</p>
         </a>
       </Link>
-      <Link href="/">
-        <a className={cn(s.item, router.pathname === "/brand" && s.active)}>
+      <Link href="/brands">
+        <a className={cn(s.item, router.pathname === "/brands" && s.active)}>
           <Brand />
           <p>브랜드</p>
         </a>
       </Link>
-      <Link href="/">
+      <Link href="/my">
         <a className={cn(s.item, router.pathname === "/my" && s.active)}>
           <User />
           <p>마이</p>

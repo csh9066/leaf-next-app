@@ -5,12 +5,16 @@ import ShoppingBag from "../../icon/ShoppingBag";
 import Container from "../../ui/Container";
 import { useRouter } from "next/dist/client/router";
 import ArrowLeft from "../../icon/ArrowLeft";
+import useIsLoggedIn from "../../../hooks/useIsLoggedIn";
+import useLoginModal from "../../../hooks/useLoginModal";
 
 interface Props {
   type: "default" | "navigator";
 }
 
 function Default() {
+  const isLoggedIn = useIsLoggedIn();
+  const { onOpen } = useLoginModal();
   return (
     <>
       <Link href="/">
@@ -18,11 +22,20 @@ function Default() {
           <Logo />
         </a>
       </Link>
-      <Link href="/cart">
-        <a className="flex justify-center items-center">
+      {isLoggedIn ? (
+        <Link href="/cart">
+          <a className="flex justify-center items-center">
+            <ShoppingBag />
+            <div className="flex justify-center items-center rounded-xl w-5 h-5 bg-primary text-white absolute top-1 right-3">
+              3
+            </div>
+          </a>
+        </Link>
+      ) : (
+        <a className="flex justify-center items-center" onClick={onOpen}>
           <ShoppingBag />
         </a>
-      </Link>
+      )}
     </>
   );
 }

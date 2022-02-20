@@ -1,0 +1,31 @@
+.bill {
+  dl {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 48px;
+    border-bottom: 1px solid #ddd;
+    dt {
+      color: #8e8e8e;
+      font-size: 14px;
+    }
+    dd {
+      color: #0d0d0d;
+      font-size: 16px;
+      strong {
+        font-size: 24px;
+        font-weight: bold;
+      }
+    }
+  }
+}
+
+.nav {
+  @apply flex;
+  li {
+    @apply flex-1 flex justify-center;
+    a {
+      @apply font-bold flex items-center justify-center h-11 text-gray-400;
+    }
+  }
+}

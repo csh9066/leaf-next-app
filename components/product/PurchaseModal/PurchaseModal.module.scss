@@ -1,5 +1,8 @@
 .root {
-  @apply bg-white;
+  max-height: 80%;
+  border-radius: 20px 20px 0 0;
+  overscroll-behavior-y: contain;
+  @apply bg-white overflow-auto fixed bottom-0 w-full;
 }
 
 .optionContainer {

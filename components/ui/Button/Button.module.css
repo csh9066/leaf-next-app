@@ -1,8 +1,8 @@
 .root {
-  @apply flex justify-center items-center outline-none border-none w-full
-  font-bold text-white bg-primary;
+  @apply inline-flex justify-center items-center outline-none border-none 
+  font-bold text-white bg-primary px-4;
   border-radius: 10px;
-  height: 55px;
+  /* height: 55px; */
 }
 
 .root + .root {
@@ -11,4 +11,20 @@
 
 .outlinedPrimary {
   @apply bg-white text-primary border-primary  border-2 border-solid;
+}
+
+.ghost {
+  @apply border-gray-100 border-2 border-solid bg-white text-black font-medium;
+}
+
+.block {
+  @apply flex w-full;
+}
+
+.sm {
+  @apply py-2 text-sm;
+}
+
+.base {
+  @apply py-4 text-base;
 }

@@ -1,10 +1,9 @@
-import { NextPage } from "next";
 import { ReactElement } from "react";
 import CartView from "../components/cart/CartView";
 import Header from "../components/common/Header";
 import Layout from "../components/common/Layout";
 
-const CartPage: NextPage = () => {
+const CartPage = () => {
   return <CartView />;
 };
 

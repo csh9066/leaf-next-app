@@ -1,0 +1,9 @@
+.root {
+  padding: 10px;
+  height: 42px;
+  @apply border placeholder-gray-300;
+}
+
+.block {
+  @apply w-full;
+}

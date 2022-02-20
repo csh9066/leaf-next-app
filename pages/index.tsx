@@ -1,26 +1,24 @@
-import type { NextPage } from "next";
-import { ReactElement, useContext } from "react";
+import { ReactElement } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
+import FooterNavBar from "../components/common/FooterNavBar";
 import Header from "../components/common/Header";
 import Layout from "../components/common/Layout";
-import NavBar from "../components/common/NavBar";
 import ProductCard from "../components/product/ProductCard";
-import useLoginModal from "../hooks/useLoginModal";
+import useSearchProductList from "../hooks/fetch/useSearchProductList";
 
-const IndexPage: NextPage = () => {
+const IndexPage = () => {
+  const { products } = useSearchProductList();
+
   return (
     <main className="pt-12 pb-14 bg-white">
       <div className="pl-5 py-10 border-b-2">
         <div className="font-bold text-black text-xl mb-5">신규 상품</div>
-        <Swiper spaceBetween={10} slidesPerView="auto" loop>
-          <SwiperSlide style={{ width: "55%" }}>
-            <ProductCard
-              href="/products/4"
-              brand="당신의식탁1"
-              price={50000}
-              name={"아메리카노 머그 300ml"}
-            />
-          </SwiperSlide>
+        <Swiper spaceBetween={10} slidesPerView="auto">
+          {products?.map((p) => (
+            <SwiperSlide style={{ width: "55%" }} key={p.id}>
+              <ProductCard product={p} />
+            </SwiperSlide>
+          ))}
         </Swiper>
       </div>
       <div className="pl-5 py-10">
@@ -35,7 +33,7 @@ IndexPage.getLayout = function getLayout(page: ReactElement) {
     <Layout>
       <Header type="default" />
       {page}
-      <NavBar />
+      <FooterNavBar />
     </Layout>
   );
 };
