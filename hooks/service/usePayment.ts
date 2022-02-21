@@ -1,10 +1,5 @@
-import {
-  AddressForm,
-  OrderCheckoutProduct,
-  Address,
-  OrderAddress,
-} from "./../../types/order";
-import { PayCompleteOrderForm } from "../../types/order";
+import { Address, AddressForm } from "./../../types/address";
+import { PayCompleteOrderForm, OrderCheckoutProduct } from "../../types/order";
 import api from "../../lib/api/api";
 import { useRouter } from "next/router";
 
@@ -12,7 +7,7 @@ function usePayment() {
   const router = useRouter();
 
   const payment = async (
-    address: Address,
+    address: Address | AddressForm,
     products: OrderCheckoutProduct[]
   ) => {
     const { IMP } = window;
@@ -28,7 +23,7 @@ function usePayment() {
           amount: 100,
           buyer_email: "",
           buyer_name: address.receiver,
-          buyer_tel: `${address.phone1}-${address.phone2}-${address.phone3}`,
+          buyer_tel: `${address.mainPhone1}-${address.mainPhone2}-${address.mainPhone3}`,
           buyer_addr: address.address,
           buyer_postcode: address.zipCode,
         },

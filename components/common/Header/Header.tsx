@@ -26,9 +26,9 @@ function Default() {
         <Link href="/cart">
           <a className="flex justify-center items-center">
             <ShoppingBag />
-            <div className="flex justify-center items-center rounded-xl w-5 h-5 bg-primary text-white absolute top-1 right-3">
+            {/* <div className="flex justify-center items-center rounded-xl w-5 h-5 bg-primary text-white absolute top-1 right-3">
               3
-            </div>
+            </div> */}
           </a>
         </Link>
       ) : (

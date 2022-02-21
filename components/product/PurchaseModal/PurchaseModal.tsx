@@ -20,25 +20,25 @@ function PurchaseModal({ visible, onClose, productId }: PurchaseModalProps) {
   const router = useRouter();
   const { data: product } = useFetchProduct(productId);
   const [totalQuantity, setTotalQuantity] = useState(1);
-  const [totalPrice, setTotalPrice] = useState(product?.price);
+  const [totalPrice, setTotalPrice] = useState(product?.price || 0);
 
   const isLoggedIn = useIsLoggedIn();
   const { onOpen: openLoginModal } = useLoginModal();
 
   const onIncrase = () => {
     setTotalQuantity(totalQuantity + 1);
-    setTotalPrice(totalPrice + product?.price);
+    setTotalPrice(totalPrice + (product?.price || 0));
   };
 
   const onDecrase = () => {
     setTotalQuantity(totalQuantity - 1);
-    setTotalPrice(totalPrice - product?.price);
+    setTotalPrice(totalPrice - (product?.price || 0));
   };
 
   const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { value } = e.target;
     setTotalQuantity(Number(value));
-    setTotalPrice(product.price * Number(value));
+    setTotalPrice((product?.price || 0) * Number(value));
   };
 
   const onAddCart = async () => {

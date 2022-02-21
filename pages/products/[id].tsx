@@ -1,4 +1,4 @@
-import { GetServerSideProps, NextPage } from "next";
+import { GetServerSidePropsContext } from "next";
 import React, { ReactElement } from "react";
 import Header from "../../components/common/Header";
 import Layout from "../../components/common/Layout";
@@ -7,13 +7,19 @@ import { getProductById } from "../../lib/api/product";
 
 interface Props {}
 
-const ProductsPage: NextPage = (props: Props) => {
+const ProductsPage = (props: Props) => {
   return <ProductView />;
 };
 
-export const getServerSideProps: GetServerSideProps = async ({ params }) => {
+export const getServerSideProps = async ({
+  params,
+}: GetServerSidePropsContext) => {
+  if (!params || !params.id) {
+    return;
+  }
+
   try {
-    const productRes = await getProductById(params.id);
+    const productRes = await getProductById(params.id as string);
     return {
       props: {
         fallback: {
@@ -21,12 +27,13 @@ export const getServerSideProps: GetServerSideProps = async ({ params }) => {
         },
       },
     };
-  } catch (e) {
-    if (e.response.status) {
-      return {
-        notFound: true,
-      };
-    }
+  } catch (error) {
+    // const e = error
+    // if (e.response.status) {
+    //   return {
+    //     notFound: true,
+    //   };
+    // }
   }
 };
 

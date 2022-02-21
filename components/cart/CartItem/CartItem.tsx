@@ -1,4 +1,4 @@
-import React from "react";
+import React, { ChangeEvent } from "react";
 import CheckBox from "../../ui/CheckBox";
 import InputQuantity from "../../ui/InputQuantity/InputQuantity";
 import s from "./CartItem.module.scss";
@@ -19,7 +19,7 @@ function CartItem({ item, isLast = false, brandId }: Props) {
     [s.isLast]: isLast,
   });
 
-  const { checked, image, price, count } = item;
+  const { checked, price, count } = item;
 
   const onCheckItem = () => {
     checkItem(brandId, item.cartItemId, !checked);
@@ -33,8 +33,8 @@ function CartItem({ item, isLast = false, brandId }: Props) {
     changeItemCount(brandId, item.cartItemId, count - 1);
   };
 
-  const onChangeCount = (e) => {
-    changeItemCount(brandId, item.cartItemId, e.target.value);
+  const onChangeCount = (e: ChangeEvent<HTMLInputElement>) => {
+    changeItemCount(brandId, item.cartItemId, Number(e.target.value));
   };
 
   return (
@@ -46,7 +46,7 @@ function CartItem({ item, isLast = false, brandId }: Props) {
           {/* <div className="text-sm font-normal">옵션:</div> */}
         </div>
         <div className={s.imgWrapper}>
-          <img src={image} alt="" />
+          <img src="" alt="" />
         </div>
       </div>
       <div className="flex justify-between">
