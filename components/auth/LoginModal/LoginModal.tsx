@@ -21,7 +21,7 @@ function LoginModal({ visible, onClose }: Props): ReactElement {
             로그인 후 이용해주세요.
           </p>
           <a
-            href={`http://localhost:8080/oauth2/authorization/kakao?next=${router.asPath}`}
+            href={`${process.env.NEXT_PUBLIC_API_URL}/oauth2/authorization/kakao?next=${router.asPath}`}
             className="flex items-center px-5 font-bold text-lg text-center"
             style={{
               height: 56,
