@@ -1,6 +1,6 @@
 import { ReactElement } from "react";
 import CartView from "../components/cart/CartView";
-import Header from "../components/common/Header";
+import ArrowBackHeader from "../components/common/ArrowBackHeader";
 import Layout from "../components/common/Layout";
 
 const CartPage = () => {
@@ -10,7 +10,7 @@ const CartPage = () => {
 CartPage.getLayout = function getLayout(page: ReactElement) {
   return (
     <Layout>
-      <Header type="navigator" />
+      <ArrowBackHeader />
       {page}
     </Layout>
   );

@@ -2,7 +2,7 @@ import { useRouter } from "next/router";
 import ArrowLeft from "../../icon/ArrowLeft";
 
 interface Props {
-  children: React.ReactNode;
+  children?: React.ReactNode;
   onClose?: () => void;
 }
 

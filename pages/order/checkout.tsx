@@ -9,6 +9,7 @@ import useFetchCheckout from "../../hooks/fetch/useFetchCheckout";
 import useIamportEffect from "../../hooks/effect/useIamportEffect";
 import AddressForm from "../../components/address/AddressForm";
 import useAddressForm from "../../hooks/service/useAddressForm";
+import ArrowBackHeader from "../../components/common/ArrowBackHeader";
 
 function CheckoutPage() {
   const { checkout } = useFetchCheckout();
@@ -40,7 +41,7 @@ function CheckoutPage() {
   const { address, deliveryFee, paymentPrice, products, productsPrice } =
     checkout;
   return (
-    <main className="bg-white pt-12 pb-36">
+    <main className="bg-white pb-36">
       {/* 배송 정보 */}
       <div className="pb-10">
         {address ? (
@@ -155,7 +156,7 @@ function CheckoutPage() {
 CheckoutPage.getLayout = function getLayout(page: ReactElement) {
   return (
     <Layout>
-      <Header type="navigator" />
+      <ArrowBackHeader>결제하기</ArrowBackHeader>
       {page}
     </Layout>
   );
