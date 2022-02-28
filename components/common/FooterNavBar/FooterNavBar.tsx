@@ -8,12 +8,15 @@ import Brand from "../../icon/Brand";
 import { useRouter } from "next/dist/client/router";
 import Store from "../../icon/Store";
 import User from "../../icon/User";
+import useLoginModal from "../../../hooks/useLoginModal";
+import useIsLoggedIn from "../../../hooks/useIsLoggedIn";
 
 interface Props {}
 
 function NavBar({}: Props): ReactElement {
   const router = useRouter();
-
+  const isLoggedIn = useIsLoggedIn();
+  const { onOpen } = useLoginModal();
   return (
     <Container className={s.root} el="nav">
       <Link href="/">
@@ -34,12 +37,22 @@ function NavBar({}: Props): ReactElement {
           <p>브랜드</p>
         </a>
       </Link>
-      <Link href="/my">
-        <a className={cn(s.item, router.pathname === "/my" && s.active)}>
+      {isLoggedIn ? (
+        <Link href="/my">
+          <a className={cn(s.item, router.pathname === "/my" && s.active)}>
+            <User />
+            <p>마이</p>
+          </a>
+        </Link>
+      ) : (
+        <a
+          className={cn(s.item, router.pathname === "/my" && s.active)}
+          onClick={onOpen}
+        >
           <User />
           <p>마이</p>
         </a>
-      </Link>
+      )}
     </Container>
   );
 }
