@@ -1,5 +1,4 @@
 import React, { ReactElement, useState } from "react";
-import Header from "../../components/common/Header";
 import Layout from "../../components/common/Layout";
 import Button from "../../components/ui/Button";
 import Container from "../../components/ui/Container";
@@ -10,6 +9,9 @@ import useIamportEffect from "../../hooks/effect/useIamportEffect";
 import AddressForm from "../../components/address/AddressForm";
 import useAddressForm from "../../hooks/service/useAddressForm";
 import ArrowBackHeader from "../../components/common/ArrowBackHeader";
+import cs from "../../styles/common.module.scss";
+import sn from "classnames";
+import classNames from "classnames";
 
 function CheckoutPage() {
   const { checkout } = useFetchCheckout();
@@ -123,6 +125,20 @@ function CheckoutPage() {
             {Number(checkout.paymentPrice).toLocaleString()}
             <span className="text-xs font-normal"> 원</span>
           </div>
+        </div>
+        <div className={classNames(cs.bill, "px-5", "py-3", "border-b")}>
+          <dl>
+            <dt>총 상품 금액</dt>
+            <dd className="mr-3">{productsPrice.toLocaleString()} 원</dd>
+          </dl>
+          <dl>
+            <dt>배송비</dt>
+            <dd className="mr-3">{deliveryFee.toLocaleString()} 원</dd>
+          </dl>
+          <dl>
+            <dt>총 결제금액</dt>
+            <dd className="mr-3">{paymentPrice.toLocaleString()} 원</dd>
+          </dl>
         </div>
       </div>
 
