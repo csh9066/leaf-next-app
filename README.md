@@ -1,7 +1,11 @@
 # Leaf
 
 친환경 제품을 판매하는 e-commerce leaf next app
-홈페이지 : [leaf](https://www.hadaeco.com/)
+
+## Link
+
+- [배포 홈페이지](https://www.hadaeco.com/)
+- [백엔드 깃](https://github.com/csh9066/leaf-shop)
 
 ## Tech Stack
 
